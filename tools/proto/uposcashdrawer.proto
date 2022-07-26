@@ -1,0 +1,38 @@
+package JposcashdrawerZMQ;
+
+option java_package = "com.bizerba.jpos.CashDrawer";
+option java_outer_classname = "UposCashDrawerProtos";
+
+// ***********************************************************
+
+enum CmdTypeCashDrawer {
+    UPOSlibInit = 0;
+    UPOSlibExit = 1;
+    UPOSlibOpen = 2;
+    UPOSlibClose = 3;
+    UPOSlibClaim = 4;
+    UPOSlibGetClaimed = 5;
+    UPOSlibRelease = 6;
+    UPOSlibSetDeviceEnabled = 7;    
+    UPOSlibGetDeviceEnabled = 8;
+    UPOSlibGetState = 9;
+    UPOSlibSetAsyncMode = 10;
+    UPOSlibGetAsyncMode = 11;
+    UPOSlibDirectIO = 12;
+    UPOSlibOpenDrawer = 13;
+    UPOSlibOpened = 14;
+    UPOSlibWaitForDrawerClose = 15;
+}
+
+message Params {
+    optional CmdTypeCashDrawer cmd = 1;
+    optional uint32 instHdl = 2;
+    repeated int32 int32Param = 3 [packed=true];
+    repeated uint32 uint32Param = 4 [packed=true];
+    repeated uint64 uint64Param = 5 [packed=true];
+   	repeated bool boolParam = 6;
+	repeated string strParam = 7;
+    optional bytes buffer = 8;    
+	optional string errorText = 9;
+	optional int32 errorCode = 10;
+}
